@@ -1,0 +1,35 @@
+*{
+    box-sizing: border-box;
+}
+
+
+.App {
+    text-align: center;
+    margin: 0 auto;
+}
+/* Cards */
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.card-btn {
+    max-width: 100%;
+}
+
+.cards-container{
+    margin-top: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+}
+
+img {
+    width: 223px;
+    height: 310px;
+}
