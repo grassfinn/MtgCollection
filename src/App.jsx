@@ -4,7 +4,8 @@ import React from 'react'
 import Card from './components/Card'
 import './App.css'
 
-
+// https://blog.logrocket.com/guide-features-updates-react-devtools/
+// https://jsramblings.com/are-you-logging-the-state-immediately-after-updating-it-heres-why-that-doesnt-work/
 
 
 
@@ -15,13 +16,24 @@ function App() {
       const [search, setSearch] = React.useState({})
       const [userInput, setUserInput] = React.useState('')
       const [load, setLoad] = React.useState(false)
-      const cardArray = []
 
-  
-      // React.useEffect(() => {
-      //     apiCall(userInput)
-          
-      // }, [])
+      const [items, setItems] = React.useState([]);
+    
+      
+     function addCards(card){
+        setItems(prevCard => [...prevCard, card])
+        }
+
+
+      async function logCollection() {
+        await console.log(items)
+      }
+        // when the items array is changed it will run this code
+        React.useEffect(() => {
+          // turns the items into local storage so it can render it in the collection tab
+          localStorage.setItem('collection', JSON.stringify(items))
+          logCollection()
+      }, [items])
   
       async function apiCall(cardName){
           setLoad(false)
@@ -31,12 +43,14 @@ function App() {
           setLoad(true) 
         }
         
-        async function handleClick(){
-          await apiCall(userInput)
+        function handleClick(){
+          apiCall(userInput)
       }
-      console.log(search.cards)
+
 
   return (
+
+
     <div className="App">
       {/* <Nav/> */}
       <h1>Enter a Magic Card!</h1>
@@ -49,7 +63,7 @@ function App() {
         {load && search.cards.map((item, index) => {
           if (item.hasOwnProperty('imageUrl')) {
             // cardArray.push(item)
-            return <Card img={item.imageUrl} key={index + 1} />
+            return <Card  card={item} img={item.imageUrl} id={index + 1} key={index + 1} addCards={addCards}/>
           }
         })}     
       </div>
