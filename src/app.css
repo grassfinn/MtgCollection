@@ -16,8 +16,29 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
     align-items: center;
     gap: 1em;
+    transition: .5s;
+}
+.card:hover {
+    /* opacity: .3; ; */
+}
+
+.overlay {
+    position: absolute;
+    font-size: 2em;
+    font-weight: bolder;
+    z-index: 2;
+    opacity: 0;
+    width: inherit;
+    height: inherit;
+    text-align: center;
+}
+
+/* when the card is hovered  make the overlay opacity trigger*/
+.card:hover .overlay {
+    opacity: .7;
 }
 
 .card-btn {
@@ -26,6 +47,7 @@ body {
 
 .cards-container{
     margin-top: 1em;
+    padding: .5em;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -33,8 +55,8 @@ body {
 }
 
 img {
-    width: 223px;
-    height: 310px;
+    width:  223px;
+    height: 310px ;
 }
 
 /* nav */
