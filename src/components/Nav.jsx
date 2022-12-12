@@ -1,18 +1,20 @@
-import React from "react";
-import "../app.css"
+import React from 'react';
+import '../app.css';
+import { Link } from 'react-router-dom';
 
-export default function Nav(){
+export default function Nav() {
+  return (
+    <div>
+      <nav>
+        <Link to="/">Home</Link>
 
-return (
-    <nav>
-        <a className="site-title" href="/">Mtg Collection</a>
         <ul className="navbar">
-        
-            <li>
-                <a href="collection">Collection</a>
-            </li>
+          <li>
+            <Link to="/collection">Collection</Link>
+          </li>
         </ul>
-    </nav>
-)
+      </nav>
 
+    </div>
+  );
 }
