@@ -9,7 +9,7 @@ export default function Collection(props) {
   const localStorage = window.localStorage.getItem('collection');
   const localStorageObj = JSON.parse(localStorage) || [];
 
-
+// console.log(localStorageObj)
   // || is setting a default value of an empty array if there is no localStorage
   // window.localStorage.clear(   )
 
