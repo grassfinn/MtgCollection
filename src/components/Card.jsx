@@ -3,11 +3,9 @@ import React from 'react';
 // https://www.freecodecamp.org/news/how-to-use-localstorage-with-react-hooks-to-set-and-get-items/
 
 export default function Card(props) {
-  const { card, img, id, addCards, removeCards } = props;
+  const { card, img, id, name, addCards, removeCards, price } = props;
   // const [hover, setHover] = React.useState(false)
   const currentCard = card;
-
-  function isInCollection() {}
 
   return (
     <div
@@ -15,8 +13,10 @@ export default function Card(props) {
       // onMouseEnter={() => setHover(true)}
       // onMouseLeave={() => setHover(false)}
     >
-      <img src={img} alt={id} />
+      <img src={img} alt={name} />
+      {/* <h2>price:{price === null ? 'MtGA' :` $${price}`}</h2> */}
       <div className="overlay">Add to Collection</div>
+      {/* have the add in an overlay as well as the add and remove rendered based on the route location */}
       <button className="card-btn" onClick={() => addCards(currentCard)}>
         Add to Collection
       </button>
