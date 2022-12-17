@@ -41,6 +41,7 @@ function App() {
     if (window.localStorage !== null) {
       // when the collection changes I need to get the local storage and set the State
       localStorage.setItem('collection', JSON.stringify(items));
+      setFilteredArray(items)
       // setItems(JSON.parse(storedItems))
       // console.log({filteredArray})
     }

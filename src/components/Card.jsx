@@ -8,7 +8,7 @@ export default function Card(props) {
   // const [hover, setHover] = React.useState(false)
   const currentCard = card;
   const location = useLocation();
-  console.log(location.pathname);
+  // console.log(location.pathname);
   return (
     <div
       className="card"

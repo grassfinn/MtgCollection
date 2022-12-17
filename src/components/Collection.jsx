@@ -2,6 +2,9 @@ import React from 'react';
 import Card from './Card';
 import { useLocation } from 'react-router-dom';
 
+
+// TODO
+// if card is already in the collection show the number of cards you have or allow only one of each card.
 export default function Collection(props) {
   const user = 'GrassFinn';
   const localStorage = window.localStorage.getItem('collection');
