@@ -27,7 +27,7 @@ export default function Search(props) {
 
   return (
     <div>
-      <h1>Enter a Magic Card!</h1>
+      <h2>Enter a Magic Card!</h2>
 
       <input
         type="text"
@@ -41,7 +41,7 @@ export default function Search(props) {
           search.data.map((item, index) => {
             // some of the items did not have the image_uri object so you need to check and filter them out!
             if (item.hasOwnProperty('image_uris')) {
-              console.log(item.prices.usd)
+              console.log(item.prices.usd);
               return (
                 // return props for the Card component
                 <Card

@@ -15,7 +15,7 @@ function App() {
     // turn local storage into a JS obj
     JSON.parse(localStorage.getItem('collection')) || []
   );
-
+  const [filteredArray, setFilteredArray] = React.useState(items);
   // add the card as well as the rest of the previous cards and set the collection item of local storage
   function addCards(card) {
     setItems((prevItems) => {
@@ -42,6 +42,7 @@ function App() {
       // when the collection changes I need to get the local storage and set the State
       localStorage.setItem('collection', JSON.stringify(items));
       // setItems(JSON.parse(storedItems))
+      // console.log({filteredArray})
     }
   }, [items]);
 
@@ -68,6 +69,8 @@ function App() {
               setItems={setItems}
               removeCards={removeCards}
               addCards={addCards}
+              filteredArray={filteredArray}
+              setFilteredArray={setFilteredArray}
             />
           }
         />
