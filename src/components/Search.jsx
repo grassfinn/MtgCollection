@@ -21,7 +21,16 @@ export default function Search(props) {
     setLoad(true);
   }
 
-  function handleClick(e) {
+  function handleKeyPress(e){
+    // stop code if any key that is not enter
+    if (e.key !=='Enter'){
+      return
+    }
+    apiCall(userInput)
+    setUserInput('')
+  }
+
+  function handleClick() {
     apiCall(userInput);
   }
 
@@ -32,6 +41,7 @@ export default function Search(props) {
       <input
         type="text"
         value={userInput}
+        onKeyDown={handleKeyPress}
         onChange={(e) => setUserInput(e.target.value)}
       />
       <button onClick={() => handleClick(userInput)}>Search</button>

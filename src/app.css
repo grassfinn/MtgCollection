@@ -22,7 +22,7 @@ body {
     transition: .5s;
 }
 .card:hover {
-    /* opacity: .3; ; */
+    /* opacity: .85; ; */
 }
 
 .overlay {
