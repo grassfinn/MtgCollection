@@ -11,7 +11,7 @@ export default function Collection(props) {
   const localStorageObj = JSON.parse(localStorage) || [];
   console.log(props);
 
-  // needed to have the filter array rest at the start of the render cycle of the component
+  // need to have the filter array reset at the start of the render cycle of the component
   React.useEffect(() => {
     props.setFilteredArray(props.items);
   }, []);
@@ -22,7 +22,7 @@ export default function Collection(props) {
         <Card
           card={item}
           img={item.image_uris.normal}
-          id={index + 1}
+          id={item.id}
           key={index + 1}
           removeCards={props.removeCards}
           addCards={props.addCards}

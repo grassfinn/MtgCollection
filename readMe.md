@@ -1,5 +1,5 @@
 App Features
-App Name - SurveilX
+App Name - CardStax
 Phase 1
 Search cards --done
 Add and remove cards to your collection --done
@@ -19,3 +19,10 @@ Card wanted probability
 Phase 2
 Deck Creator
 Deck Hand Tester
+
+### Things I have Learned
+.some
+.includes
+learned more on how to use .filter
+practicing using the ! to filter unwanted results first
+React Router

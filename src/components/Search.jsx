@@ -11,14 +11,18 @@ export default function Search(props) {
   async function apiCall(cardName) {
     const scryfall = `https://api.scryfall.com/cards/search?q=${cardName}`;
     setLoad(false);
-    const res = await fetch(
-      // `https://api.magicthegathering.io/v1/cards?name=${cardName}`
-      scryfall
-    );
-    const data = await res.json();
-    console.log(data);
-    setSearch(data);
-    setLoad(true);
+    try {
+
+      const res = await fetch(
+        // `https://api.magicthegathering.io/v1/cards?name=${cardName}`
+        scryfall
+      );
+      const data = await res.json();
+      setSearch(data);
+      setLoad(true);
+    } catch(error){
+      console.log(error)
+    }
   }
 
   function handleKeyPress(e){
@@ -55,11 +59,10 @@ export default function Search(props) {
               return (
                 // return props for the Card component
                 <Card
-                  //   collection={items}
                   card={item}
                   name={item.name}
                   img={item.image_uris.normal}
-                  id={index + 1}
+                  id={item.id}
                   key={index + 1}
                   addCards={addCards}
                   removeCards={removeCards}

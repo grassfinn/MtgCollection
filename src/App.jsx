@@ -16,14 +16,28 @@ function App() {
     JSON.parse(localStorage.getItem('collection')) || []
   );
   const [filteredArray, setFilteredArray] = React.useState(items);
-  // add the card as well as the rest of the previous cards and set the collection item of local storage
   function addCards(card) {
-    setItems((prevItems) => {
-      const newItems = [...prevItems, card];
-      // turn locale storage into a string
-      localStorage.setItem('collection', JSON.stringify(newItems));
-      return newItems;
+    // https://bobbyhadz.com/blog/react-check-if-element-exists-in-array
+    // check if the card is already in the array
+    const isFound = items.some((element) => {
+      if (element.id === card.id) {
+        console.log(`${element.name}`);
+        return true;
+      }
     });
+
+    if (!isFound) {
+      // add the card as well as the rest of the previous cards and set the collection item of local storage
+      setItems((prevItems) => {
+        const newItems = [...prevItems, card];
+        // turn locale storage into a string
+        localStorage.setItem('collection', JSON.stringify(newItems));
+        console.log(`${card.name} IS NOT in the collection.`)
+        return newItems;
+      });
+    }
+    console.log(`${card.name} IS IN the collection.`)
+    return items;
   }
 
   // filter through the unwanted card and remove it from the array of cards as well as set the collection item of local storage
@@ -35,13 +49,17 @@ function App() {
     });
   }
 
+  React.useEffect(() => {
+    setItems(items);
+  }, []);
   // updates local storage when items state changes
   React.useEffect(() => {
     // turns the items into local storage so it can render it in the collection tab
     if (window.localStorage !== null) {
       // when the collection changes I need to get the local storage and set the State
       localStorage.setItem('collection', JSON.stringify(items));
-      setFilteredArray(items)
+      setFilteredArray(items);
+      console.log('reload');
       // setItems(JSON.parse(storedItems))
       // console.log({filteredArray})
     }

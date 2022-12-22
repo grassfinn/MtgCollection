@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 export default function Card(props) {
   const { card, img, id, name, addCards, removeCards, price } = props;
   // const [hover, setHover] = React.useState(false)
-  const [count, setCount] = React.useState(0)
+  const [count, setCount] = React.useState(0);
   const currentCard = card;
   const location = useLocation();
   return (
@@ -15,7 +15,7 @@ export default function Card(props) {
       // onMouseEnter={() => setHover(true)}
       // onMouseLeave={() => setHover(false)}
     >
-      <img src={img} alt={name} />
+      <img src={img} alt={name} id={id} />
       {/* <h2>price:{price === null ? 'MtGA' :` $${price}`}</h2> */}
       <div className="overlay">
         {/* <i className="fa-solid fa-plus"></i> */}
@@ -24,7 +24,13 @@ export default function Card(props) {
       {/* have the add in an overlay as well as the add and remove rendered based on the route location */}
       {/* have the buttons appear based on the pathname they are in */}
       {location.pathname !== '/collection' ? (
-        <button className="card-btn" onClick={() => addCards(currentCard)}>
+        <button
+          className="card-btn"
+          onClick={() => {
+            addCards(currentCard);
+            // setCount(prevValue => prevValue + 1)
+          }}
+        >
           Add to Collection
         </button>
       ) : (
@@ -37,6 +43,7 @@ export default function Card(props) {
       ) : (
         ''
       )}
+      {/* <p>{count}</p> */}
     </div>
   );
 }
