@@ -36,7 +36,7 @@ export default function Card(props) {
       ) : (
         ''
       )}
-      {location.pathname !== '/' ? (
+      {location.pathname !== '/MtgCollection/' ? (
         <button className="card-btn" onClick={() => removeCards(currentCard)}>
           Remove from Collection
         </button>

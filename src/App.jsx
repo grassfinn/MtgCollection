@@ -67,10 +67,10 @@ function App() {
   return (
     <div className="App">
       <Nav />
-      <div className='container'>
+      <div className="container">
         <Routes>
           <Route
-            path="/"
+            path="/MtgCollection/"
             element={
               <Homepage
                 addCards={addCards}
