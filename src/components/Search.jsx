@@ -11,30 +11,36 @@ export default function Search(props) {
   async function apiCall(cardName) {
     const scryfall = `https://api.scryfall.com/cards/search?q=${cardName}`;
     setLoad(false);
-    try {
 
-      const res = await fetch(
-        // `https://api.magicthegathering.io/v1/cards?name=${cardName}`
-        scryfall
-      );
-      const data = await res.json();
-      setSearch(data);
-      setLoad(true);
-    } catch(error){
-      console.log(error)
-    }
-  }
-
-  function handleKeyPress(e){
-    // stop code if any key that is not enter
-    if (e.key !=='Enter'){
+    const res = await fetch(
+      // `https://api.magicthegathering.io/v1/cards?name=${cardName}`
+      scryfall
+    );
+    // if the call did not go through alert
+    if (res.status === 404){
+      alert('please write a card name')
       return
     }
-    apiCall(userInput)
-    setUserInput('')
+
+    const data = await res.json();
+
+    setSearch(data);
+    setLoad(true);
+  }
+
+  function handleKeyPress(e) {
+    // stop code if any key that is not enter
+    if (e.key !== 'Enter' || !userInput) {
+      return;
+    }
+    apiCall(userInput);
+    setUserInput('');
   }
 
   function handleClick() {
+    if (!userInput) {
+      return
+    }
     apiCall(userInput);
   }
 

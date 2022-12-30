@@ -32,11 +32,11 @@ function App() {
         const newItems = [...prevItems, card];
         // turn locale storage into a string
         localStorage.setItem('collection', JSON.stringify(newItems));
-        console.log(`${card.name} IS NOT in the collection.`)
+        console.log(`${card.name} IS NOT in the collection.`);
         return newItems;
       });
     }
-    console.log(`${card.name} IS IN the collection.`)
+    console.log(`${card.name} IS IN the collection.`);
     return items;
   }
 
@@ -68,32 +68,34 @@ function App() {
   return (
     <div className="App">
       <Nav />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Homepage
-              addCards={addCards}
-              removeCards={removeCards}
-              collection={items}
-              setCollection={setItems}
-            />
-          }
-        />
-        <Route
-          path="/collection/"
-          element={
-            <Collection
-              items={items}
-              setItems={setItems}
-              removeCards={removeCards}
-              addCards={addCards}
-              filteredArray={filteredArray}
-              setFilteredArray={setFilteredArray}
-            />
-          }
-        />
-      </Routes>
+      <div className='container'>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Homepage
+                addCards={addCards}
+                removeCards={removeCards}
+                collection={items}
+                setCollection={setItems}
+              />
+            }
+          />
+          <Route
+            path="/collection/"
+            element={
+              <Collection
+                items={items}
+                setItems={setItems}
+                removeCards={removeCards}
+                addCards={addCards}
+                filteredArray={filteredArray}
+                setFilteredArray={setFilteredArray}
+              />
+            }
+          />
+        </Routes>
+      </div>
     </div>
   );
 }
