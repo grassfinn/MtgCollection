@@ -6,7 +6,7 @@ export default function Nav() {
   return (
     <div>
       <nav>
-        <Link to="/">Home</Link>
+        <Link to="/MtgCollection/">Home</Link>
 
         <ul className="navbar">
           <li>
@@ -14,7 +14,6 @@ export default function Nav() {
           </li>
         </ul>
       </nav>
-
     </div>
   );
 }
