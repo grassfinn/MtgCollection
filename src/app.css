@@ -35,9 +35,6 @@ button {
   gap: 1em;
   transition: 0.5s;
 }
-.card:hover {
-  /* opacity: .85; ; */
-}
 
 .overlay {
   position: absolute;
