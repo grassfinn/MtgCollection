@@ -1,6 +1,5 @@
 import Nav from './components/Nav';
 import React from 'react';
-import './App.css';
 import { useLocation } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import Homepage from './components/Home';
