@@ -1,5 +1,6 @@
 import App from './App';
 import './app.css';
+import './reset.css'
 import Collection from './components/Collection';
 import Homepage from './components/Home';
 import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom';

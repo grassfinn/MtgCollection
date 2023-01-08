@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import Homepage from './components/Home';
 import Collection from './components/Collection';
+import About from './components/About';
 
 function App() {
   const location = useLocation();
@@ -80,6 +81,12 @@ function App() {
               />
             }
           />
+          <Route 
+            path='/about/'
+            element={About('phase1')}
+            >
+
+          </Route>
           <Route
             path="/collection/"
             element={

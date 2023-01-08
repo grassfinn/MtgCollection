@@ -8,7 +8,10 @@ export default function Nav() {
       <nav>
         <Link to="/MtgCollection/">Home</Link>
 
-        <ul className="navbar">
+        <ul className="navbar flex">
+          <li>
+            <Link to="/about">About</Link>
+          </li>
           <li>
             <Link to="/collection">Collection</Link>
           </li>

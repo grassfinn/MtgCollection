@@ -11,6 +11,7 @@ export default function Homepage(props) {
         This site is a currently in phase 1, You can read about the dev log in
         the about us tab.{' '}
       </h3>
+      <h4> Try searching fire or counter</h4>
       <Search addCards={props.addCards} removeCards={props.removeCards} />
     </div>
   );
