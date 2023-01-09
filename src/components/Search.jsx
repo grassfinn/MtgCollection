@@ -7,6 +7,15 @@ export default function Search(props) {
   const [load, setLoad] = React.useState(false);
   const [userInput, setUserInput] = React.useState('');
   const [search, setSearch] = React.useState({});
+  const [message, setMessage] = React.useState('');
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setMessage('');
+    }, 2000);
+    // must clear the time out
+    return () => clearTimeout(timer);
+  }, [message]);
 
   async function apiCall(cardName) {
     const scryfall = `https://api.scryfall.com/cards/search?q=${cardName}`;
@@ -17,9 +26,9 @@ export default function Search(props) {
       scryfall
     );
     // if the call did not go through alert
-    if (res.status === 404){
-      alert('please write a card name')
-      return
+    if (res.status === 404) {
+      alert('please write a card name');
+      return;
     }
 
     const data = await res.json();
@@ -39,7 +48,7 @@ export default function Search(props) {
 
   function handleClick() {
     if (!userInput) {
-      return
+      return;
     }
     apiCall(userInput);
   }
@@ -55,13 +64,14 @@ export default function Search(props) {
         onChange={(e) => setUserInput(e.target.value)}
       />
       <button onClick={() => handleClick(userInput)}>Search</button>
+      <p>{message}</p>
       <div className="cards-container">
         {/* if load is true then map through the array and return a card for each item */}
         {load &&
           search.data.map((item, index) => {
             // some of the items did not have the image_uri object so you need to check and filter them out!
             if (item.hasOwnProperty('image_uris')) {
-              console.log(item.prices.usd);
+              // console.log(item.prices.usd);
               return (
                 // return props for the Card component
                 <Card
@@ -73,6 +83,7 @@ export default function Search(props) {
                   addCards={addCards}
                   removeCards={removeCards}
                   price={item.prices.usd}
+                  setMessage={setMessage}
                 />
               );
             }

@@ -74,6 +74,25 @@ img {
   height: 310px;
 }
 
+@keyframes horizontal-shaking {
+0% { transform: translateX(0) }
+25% { transform: translateX(5px) }
+50% { transform: translateX(-5px) }
+75% { transform: translateX(5px) }
+100% { transform: translateX(0) }
+}
+.added {
+  animation: horizontal-shaking;
+  animation-duration: .5s;
+}
+
+/* https://getcssscan.com/css-box-shadow-examples */
+.card:hover{
+  transform: scale(1.01);
+  transition: .5s;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
 /* nav */
 nav {
   background-color: #333;
