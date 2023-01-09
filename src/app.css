@@ -127,3 +127,11 @@ nav ul {
   margin: 0;
   list-style: none;
 }
+
+/* adding CSS of fork */
+.fork {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
