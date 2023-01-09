@@ -2,13 +2,20 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 
 // https://www.freecodecamp.org/news/how-to-use-localstorage-with-react-hooks-to-set-and-get-items/
+// https://unused-css.com/blog/css-shake-animation/
+
+// TODO
+// Select Multiple Cards and have a button that adds them all to collection
+
+
 
 export default function Card(props) {
-  const { card, img, id, name, addCards, removeCards, price } = props;
+  const { card, img, id, name, addCards, removeCards, price, setMessage } = props;
   // const [hover, setHover] = React.useState(false)
   const [count, setCount] = React.useState(0);
   const currentCard = card;
   const location = useLocation();
+  const message = `${name} has been added to you collection!`
   return (
     <div
       className="card"
@@ -27,6 +34,8 @@ export default function Card(props) {
         <button
           className="card-btn"
           onClick={() => {
+            document.getElementById(`${id}`).classList.add('added')
+            setMessage(message)
             addCards(currentCard);
             // setCount(prevValue => prevValue + 1)
           }}
