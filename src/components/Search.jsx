@@ -82,7 +82,7 @@ export default function Search(props) {
                   key={index + 1}
                   addCards={addCards}
                   removeCards={removeCards}
-                  price={item.prices.usd}
+                  // price={item.prices.usd}
                   setMessage={setMessage}
                 />
               );

@@ -23,7 +23,7 @@ export default function Card(props) {
         // onMouseLeave={() => setHover(false)}
       >
         <img src={img} alt={name} id={id} />
-        <h2>price:{price === null ? "MtGA" : ` $${price}`}</h2>
+        {/* <h2>price:{price === null ? "MtGA" : ` $${price}`}</h2> */}
         <div className="overlay">
           {/* <i className="fa-solid fa-plus"></i> */}
           {/* <i className="fa-solid fa-trash"></i> */}
