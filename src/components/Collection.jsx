@@ -49,7 +49,10 @@ export default function Collection(props) {
 
     props.setFilteredArray((prevItems) => {
       // https://www.w3schools.com/jsref/jsref_filter.asp
-      const newItems = prevItems.filter((item) => item.colors.includes(color));
+      // Instead of filtering through prevItems, made to filter from the items array to make filtering works in all cases.
+      const newItems = props.items.filter((item) =>
+        item.colors.includes(color)
+      );
       // if new items is not equal to zero then we want to return the filtered array
       if (newItems.length !== 0) {
         return newItems;
@@ -73,7 +76,7 @@ export default function Collection(props) {
     <div>
       <h1>{user}'s Collection</h1>
       <h2>Use the buttons below to filter your cards by color!</h2>
-      <div className="filter-btn">
+      <div className='filter-btn'>
         <button onClick={() => filterByColor('R')}>Red</button>
         <button onClick={() => filterByColor('W')}>White</button>
         <button onClick={() => filterByColor('U')}>Blue</button>
@@ -85,7 +88,7 @@ export default function Collection(props) {
         <p>{message}</p>
       </div>
       {/* check if filtered array then render  or if localstorage is there and render. */}
-      <div className="cards-container">
+      <div className='cards-container'>
         {localStorage && cardEle(props.filteredArray || localStorageObj)}
       </div>
     </div>
