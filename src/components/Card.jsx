@@ -8,13 +8,24 @@ import { useLocation } from "react-router-dom";
 // Select Multiple Cards and have a button that adds them all to collection
 
 export default function Card(props) {
-  const { card, img, id, name, addCards, removeCards, price, setMessage } =
+  const { card, img, id, name, addCards, removeCards, price } =
     props;
   // const [hover, setHover] = React.useState(false)
   const [count, setCount] = React.useState(0);
+  const [message, setMessage] = React.useState('');
   const currentCard = card;
   const location = useLocation();
-  const message = `${name} has been added to you collection!`;
+  const messageContent = `${name} has been added to you collection!`;
+
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setMessage('');
+    }, 2000);
+    // must clear the time out
+    return () => clearTimeout(timer);
+  }, [message]);
+
   return (
     <div>
       <div
@@ -34,12 +45,13 @@ export default function Card(props) {
         {/* <p>{count}</p> */}
       </div>
       <div className="fork">
+        <p>{message}</p>
         {location.pathname !== "/collection" ? (
           <button
             className="card-btn"
             onClick={() => {
               document.getElementById(`${id}`).classList.add("added");
-              setMessage(message);
+              setMessage(messageContent);
               addCards(currentCard);
               // setCount(prevValue => prevValue + 1)
             }}>
