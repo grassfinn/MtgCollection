@@ -7,15 +7,7 @@ export default function Search(props) {
   const [load, setLoad] = React.useState(false);
   const [userInput, setUserInput] = React.useState('');
   const [search, setSearch] = React.useState({});
-  const [message, setMessage] = React.useState('');
 
-  React.useEffect(() => {
-    const timer = setTimeout(() => {
-      setMessage('');
-    }, 2000);
-    // must clear the time out
-    return () => clearTimeout(timer);
-  }, [message]);
 
   async function apiCall(cardName) {
     const scryfall = `https://api.scryfall.com/cards/search?q=${cardName}`;
@@ -64,7 +56,6 @@ export default function Search(props) {
         onChange={(e) => setUserInput(e.target.value)}
       />
       <button onClick={() => handleClick(userInput)}>Search</button>
-      <p>{message}</p>
       <div className="cards-container">
         {/* if load is true then map through the array and return a card for each item */}
         {load &&
@@ -83,7 +74,6 @@ export default function Search(props) {
                   addCards={addCards}
                   removeCards={removeCards}
                   // price={item.prices.usd}
-                  setMessage={setMessage}
                 />
               );
             }
