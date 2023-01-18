@@ -9,6 +9,8 @@ import Collection from './components/Collection';
 function App() {
   const location = useLocation();
 
+  const [login, setLogin] = React.useState(false)
+
   const localStorage = window.localStorage;
   // connect the state to local storage and an empty array if local storage is empty
   const [items, setItems] = React.useState(
@@ -74,6 +76,8 @@ function App() {
             path="/"
             element={
               <Homepage
+                login={login}
+                setLogin={setLogin}
                 addCards={addCards}
                 removeCards={removeCards}
                 collection={items}
