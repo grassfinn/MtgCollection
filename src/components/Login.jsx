@@ -1,10 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // https://www.youtube.com/watch?v=91qEdc6dSUs&ab_channel=TylerPotts
 export default function Login(props) {
-  const [registeredUsers, setRegisteredUsers] = React.useState({
-    users: [{ username: 'hobojohn6', password: 'andrew' }],
-  });
+
+  console.log({props})
 
   const [user, setUser] = React.useState({
     username: '',
@@ -21,17 +21,18 @@ export default function Login(props) {
     }
   }
 
-  
-
   function handleSubmit(e) {
     e.preventDefault();
-    if (!user.username.match(registeredUsers.users[0].username) && !user.password.match(registeredUsers.users[0].password)){
-        props.setLogin(false)
-        return;
+    if (
+      !user.username.match(props.registeredUsers[0].username) &&
+      !user.password.match(props.registeredUsers[0].password)
+    ) {
+      props.setLogin(false);
+      return;
     }
-    console.log('Login Sucessful!')
-    props.setLogin(true)
-}
+    console.log('Login Sucessful!');
+    props.setLogin(true);
+  }
 
   return (
     <div className="login">
@@ -39,6 +40,7 @@ export default function Login(props) {
         <label htmlFor="user">
           <span>Username</span>
           <input
+            autoComplete="false"
             type="text"
             id="user"
             name="username"
@@ -46,9 +48,11 @@ export default function Login(props) {
             onChange={handleChange}
           />
         </label>
+        <br />
         <label htmlFor="pass">
           <span>Password</span>
           <input
+            autoComplete="false"
             type="password"
             id="pass"
             name="password"
@@ -58,6 +62,7 @@ export default function Login(props) {
         </label>
         <button onClick={handleSubmit}>Login</button>
       </form>
+      <Link to="/signup">Click to sign up</Link>
     </div>
   );
 }

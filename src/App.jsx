@@ -5,11 +5,14 @@ import { useLocation } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import Homepage from './components/Home';
 import Collection from './components/Collection';
-
+import SignUp from './components/SignUp';
 function App() {
   const location = useLocation();
+  const [registeredUsers, setRegisteredUsers] = React.useState([
+    { username: 'admin', password: 'admin' },
+  ]);
 
-  const [login, setLogin] = React.useState(false)
+  const [login, setLogin] = React.useState(false);
 
   const localStorage = window.localStorage;
   // connect the state to local storage and an empty array if local storage is empty
@@ -70,13 +73,14 @@ function App() {
   return (
     <div className="App">
       <Nav />
-      <div className='container'>
+      <div className="container">
         <Routes>
           <Route
             path="/"
             element={
               <Homepage
                 login={login}
+                registeredUsers={registeredUsers}
                 setLogin={setLogin}
                 addCards={addCards}
                 removeCards={removeCards}
@@ -89,6 +93,7 @@ function App() {
             path="/collection/"
             element={
               <Collection
+                login={login}
                 items={items}
                 setItems={setItems}
                 removeCards={removeCards}
@@ -98,6 +103,7 @@ function App() {
               />
             }
           />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </div>
     </div>

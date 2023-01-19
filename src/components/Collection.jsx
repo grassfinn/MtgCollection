@@ -9,7 +9,7 @@ export default function Collection(props) {
   const user = 'GrassFinn';
   const localStorage = window.localStorage.getItem('collection');
   const localStorageObj = JSON.parse(localStorage) || [];
-  console.log(props);
+  console.log({props});
 
   // need to have the filter array reset at the start of the render cycle of the component
   React.useEffect(() => {
@@ -47,12 +47,15 @@ export default function Collection(props) {
     });
   }
 
-  function messages() {
-    return <h2>Your Collection is Empty.</h2>;
+  function messages(string) {
+    return <h2>{string}</h2>;
   }
 
   return (
     <div>
+      {props.login && 
+      <div>
+
       <h1>{user}'s Collection</h1>
       <h2>Use the buttons below to filter your cards by color!</h2>
       <button onClick={() => filterByColor('R')}>Red</button>
@@ -64,6 +67,10 @@ export default function Collection(props) {
       <div className="cards-container">
         {localStorage && cardEle(props.filteredArray || localStorageObj)}
       </div>
+      </div>
+      }
+
+      { !props.items ||!props.login && messages('Your collection is empty or you are not logged in.')}
     </div>
   );
 }
