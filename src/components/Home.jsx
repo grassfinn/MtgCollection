@@ -13,11 +13,10 @@ export default function Homepage(props) {
         the about us tab.{' '}
       </h3>
       {/* when login is false show the login screen */}
-      {!props.login && <Login registeredUsers={props.registeredUsers} login={props.login} setLogin={props.setLogin} />}
+      {/* {!props.login && <Login registeredUsers={props.registeredUsers} login={props.login} setLogin={props.setLogin} />} */}
       {/*  when login is true show the search*/}
-      {props.login && (
         <Search addCards={props.addCards} removeCards={props.removeCards} />
-      )}
+      
     </div>
   );
 }

@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 // TODO
 // if card is already in the collection show the number of cards you have or allow only one of each card.
 export default function Collection(props) {
-  const user = 'GrassFinn';
+  const user = props.login.user;
   const localStorage = window.localStorage.getItem('collection');
   const localStorageObj = JSON.parse(localStorage) || [];
   console.log({props});
@@ -53,7 +53,7 @@ export default function Collection(props) {
 
   return (
     <div>
-      {props.login && 
+      {props.login.login && 
       <div>
 
       <h1>{user}'s Collection</h1>
@@ -70,7 +70,7 @@ export default function Collection(props) {
       </div>
       }
 
-      { !props.items ||!props.login && messages('Your collection is empty or you are not logged in.')}
+      { !props.items ||!props.login.login && messages('Your collection is empty or you are not logged in.')}
     </div>
   );
 }
