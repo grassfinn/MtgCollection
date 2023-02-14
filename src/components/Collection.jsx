@@ -5,29 +5,17 @@ import { useLocation } from 'react-router-dom';
 // TODO
 // if card is already in the collection show the number of cards you have or allow only one of each card.
 export default function Collection(props) {
-  const user = 'GrassFinn';
+  const user = props.login.user;
   const localStorage = window.localStorage.getItem('collection');
   const localStorageObj = JSON.parse(localStorage) || [];
-  console.log(props);
-
-  const [message, setMessage] = React.useState('');
+  console.log({props});
 
   // need to have the filter array reset at the start of the render cycle of the component
   React.useEffect(() => {
     props.setFilteredArray(props.items);
   }, []);
 
-  React.useEffect(() => {
-    // setTimeout is similiar to setTimer in JS
-
-    // create a timer that setts the message back to  '
-    const timer = setTimeout(() => {
-      setMessage('');
-    }, 2000);
-    // must clear the time out
-    return () => clearTimeout(timer);
-  }, [message]);
-
+  
   let cardEle = (array) =>
     array.map((item, index) => {
       return (
@@ -68,12 +56,15 @@ export default function Collection(props) {
     props.setFilteredArray(props.items);
   }
 
-  function messages() {
-    return "You don't have any cards of that color in your collection";
+  function messages(string) {
+    return <h2>{string}</h2>;
   }
 
   return (
     <div>
+      {props.login.login && 
+      <div>
+
       <h1>{user}'s Collection</h1>
       <h2>Use the buttons below to filter your cards by color!</h2>
       <div className='filter-btn'>
@@ -84,13 +75,14 @@ export default function Collection(props) {
         <button onClick={() => filterByColor('G')}>Green</button>
         <button onClick={resetFilter}>Reset Filter</button>
       </div>
-      <div>
-        <p>{message}</p>
-      </div>
       {/* check if filtered array then render  or if localstorage is there and render. */}
       <div className='cards-container'>
         {localStorage && cardEle(props.filteredArray || localStorageObj)}
       </div>
+      </div>
+      }
+
+      { !props.items ||!props.login.login && messages('Your collection is empty or you are not logged in.')}
     </div>
   );
 }

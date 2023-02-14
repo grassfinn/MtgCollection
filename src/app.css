@@ -125,19 +125,13 @@ nav a {
 nav ul {
   padding: 0;
   margin: 0;
+  display: flex;
   list-style: none;
 }
-
-/* adding CSS of fork */
-.fork {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin-top: 10px;
+.logout{
+  padding: 16px;
 }
 
-.fork > p {
-	max-width: 223px;
-	margin-top: 10px;
+.logout:hover {
+  cursor: pointer;
 }

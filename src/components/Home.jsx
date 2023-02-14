@@ -1,5 +1,6 @@
 import React from 'react';
 import Search from './Search';
+import Login from './Login';
 export default function Homepage(props) {
   return (
     <div>
@@ -11,8 +12,11 @@ export default function Homepage(props) {
         This site is a currently in phase 1, You can read about the dev log in
         the about us tab.{' '}
       </h3>
-      <h4> Try searching fire or counter</h4>
-      <Search addCards={props.addCards} removeCards={props.removeCards} />
+      {/* when login is false show the login screen */}
+      {/* {!props.login && <Login registeredUsers={props.registeredUsers} login={props.login} setLogin={props.setLogin} />} */}
+      {/*  when login is true show the search*/}
+        <Search addCards={props.addCards} removeCards={props.removeCards} />
+      
     </div>
   );
 }

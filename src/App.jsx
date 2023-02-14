@@ -4,10 +4,20 @@ import { useLocation } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import Homepage from './components/Home';
 import Collection from './components/Collection';
+import SignUp from './components/SignUp';
+import Login from './components/Login';
+import LifeCounter from './components/LifeCounter';
 import About from './components/About';
-
 function App() {
   const location = useLocation();
+  const [registeredUsers, setRegisteredUsers] = React.useState([
+    { username: 'admin', password: 'admin' },
+  ]);
+
+  const [login, setLogin] = React.useState({
+    user: '',
+    login: false,
+  });
 
   const localStorage = window.localStorage;
   // connect the state to local storage and an empty array if local storage is empty
@@ -67,13 +77,16 @@ function App() {
 
   return (
     <div className="App">
-      <Nav />
+      <Nav login={login} setLogin={setLogin} registeredUser={registeredUsers} />
       <div className="container">
         <Routes>
           <Route
             path="/MtgCollection/"
             element={
               <Homepage
+                login={login}
+                registeredUsers={registeredUsers}
+                setLogin={setLogin}
                 addCards={addCards}
                 removeCards={removeCards}
                 collection={items}
@@ -81,22 +94,30 @@ function App() {
               />
             }
           />
-          <Route 
-            path='/about/'
-            element={About('phase1')}
-            >
-
-          </Route>
+          <Route path="/about/" element={<About phase="1.5" />} />
+          <Route path="/lifeCounter/" element={<LifeCounter />} />
           <Route
             path="/collection/"
             element={
               <Collection
+                login={login}
                 items={items}
                 setItems={setItems}
                 removeCards={removeCards}
                 addCards={addCards}
                 filteredArray={filteredArray}
                 setFilteredArray={setFilteredArray}
+              />
+            }
+          />
+          <Route path="/signup" element={<SignUp />} />
+          <Route
+            path="/login"
+            element={
+              <Login
+                registeredUsers={registeredUsers}
+                login={login}
+                setLogin={setLogin}
               />
             }
           />
