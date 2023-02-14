@@ -7,6 +7,7 @@ import Homepage from './components/Home';
 import Collection from './components/Collection';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
+import LifeCounter from './components/LifeCounter';
 function App() {
   const location = useLocation();
   const [registeredUsers, setRegisteredUsers] = React.useState([
@@ -15,7 +16,7 @@ function App() {
 
   const [login, setLogin] = React.useState({
     user: '',
-    login: false
+    login: false,
   });
 
   const localStorage = window.localStorage;
@@ -93,6 +94,7 @@ function App() {
               />
             }
           />
+          <Route path="/lifeCounter/" element={<LifeCounter/>} />
           <Route
             path="/collection/"
             element={
@@ -110,7 +112,13 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route
             path="/login"
-            element={<Login registeredUsers={registeredUsers} login={login} setLogin={setLogin} />}
+            element={
+              <Login
+                registeredUsers={registeredUsers}
+                login={login}
+                setLogin={setLogin}
+              />
+            }
           />
         </Routes>
       </div>

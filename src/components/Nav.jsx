@@ -11,6 +11,9 @@ export default function Nav(props) {
 
         <ul className="navbar">
           <li>
+            <Link to="/lifeCounter">Life Counter</Link>
+          </li>
+          <li>
             <Link to="/collection">Collection</Link>
           </li>
           <li>{!props.login.login ? <Link to="/login">Login</Link> : <span className='logout' onClick={() => props.setLogin(!props.login)}>Log Out</span>}</li>
