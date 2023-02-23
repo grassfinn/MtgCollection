@@ -77,7 +77,7 @@ function App() {
 
   return (
     <div className="App">
-      <Nav login={login} setLogin={setLogin} registeredUser={registeredUsers} />
+      <Nav login={login} setLogin={setLogin}  registeredUser={registeredUsers} />
       <div className="container">
         <Routes>
           <Route
