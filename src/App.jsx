@@ -18,12 +18,12 @@ function App() {
     user: '',
     login: false,
   });
-
+  
   const localStorage = window.localStorage;
   // connect the state to local storage and an empty array if local storage is empty
   const [items, setItems] = React.useState(
     // turn local storage into a JS obj
-    JSON.parse(localStorage.getItem('collection')) || []
+    (localStorage.getItem('collection')) === 'undefined' ? [] : JSON.parse(localStorage.getItem('collection'))
   );
   const [filteredArray, setFilteredArray] = React.useState(items);
   function addCards(card) {
@@ -35,7 +35,7 @@ function App() {
         return true;
       }
     });
-
+    
     if (!isFound) {
       // add the card as well as the rest of the previous cards and set the collection item of local storage
       setItems((prevItems) => {

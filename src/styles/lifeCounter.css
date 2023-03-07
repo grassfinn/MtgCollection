@@ -1,4 +1,4 @@
-*{
+* {
   box-sizing: border-box;
 }
 body {
@@ -12,48 +12,43 @@ body {
   align-items: center;
 }
 
-.plus, .minus {
-
+.plus,
+.minus {
   width: 100%;
   height: 50vh;
 }
 .plus {
   background-color: rgb(58, 255, 58);
-  opacity: .1;
-}
-
-.plus:hover {
+  opacity: 0.1;
 }
 
 .plus:active {
-  transition: .2s;
-  opacity: .5;
+  transition: 0.2s;
+  opacity: 0.5;
 }
 
 .minus {
   background-color: rgb(250, 58, 58);
-  opacity: .1;
-}
-
-.minus:hover {
+  opacity: 0.1;
 }
 
 .minus:active {
-  transition: .2s;
-  opacity: .5;
+  transition: 0.2s;
+  opacity: 0.5;
 }
 /* players */
-.player-one, .player-two {
+.player-one,
+.player-two {
   position: relative;
   width: 100%;
   min-height: 50vh;
 }
 .player-one {
   transform: rotate(180deg);
-
 }
 
-.player-one-life, .player-two-life {
+.player-one-life,
+.player-two-life {
   position: absolute;
   font-size: 10rem;
   /* background-color: rgba(100, 100, 100, 1); */
@@ -61,7 +56,6 @@ body {
   /* border-radius: 50%; */
   z-index: -1;
 }
-
 
 .game {
   display: flex;
@@ -75,22 +69,23 @@ body {
   color: white;
   font-size: 1.5rem;
   position: absolute;
-  padding: 1em ;
+  padding: 1em;
   border-radius: 20px;
   font-weight: 900;
 }
 
 .reset:hover {
-  animation: wiggle 2s linear ;
+  animation: wiggle 2s linear;
 }
 
-.reset:hover{
+.reset:hover {
   cursor: pointer;
 }
 
 /* Keyframes */
 @keyframes wiggle {
-  0%, 7% {
+  0%,
+  7% {
     transform: rotateZ(0);
   }
   15% {
@@ -108,7 +103,8 @@ body {
   35% {
     transform: rotateZ(-4deg);
   }
-  40%, 100% {
+  40%,
+  100% {
     transform: rotateZ(0);
   }
 }

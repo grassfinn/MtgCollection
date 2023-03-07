@@ -21,6 +21,7 @@ export default function Collection(props) {
       return (
         <Card
           card={item}
+          // count={item.count}
           img={item.image_uris.normal}
           id={item.id}
           key={index + 1}
@@ -46,7 +47,6 @@ export default function Collection(props) {
         return newItems;
       }
       //  If no elements pass the test it returns an empty array. so we need to cover that option
-      setMessage(messages);
       // setTimeout(setMessage(''),1000)
       return prevItems;
     });

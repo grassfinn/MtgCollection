@@ -62,12 +62,14 @@ export default function Search(props) {
           search.data.map((item, index) => {
             // some of the items did not have the image_uri object so you need to check and filter them out!
             if (item.hasOwnProperty('image_uris')) {
+              // item.count = 0
               // console.log(item.prices.usd);
               return (
                 // return props for the Card component
                 <Card
                   card={item}
                   name={item.name}
+                  // count={item.count}
                   img={item.image_uris.normal}
                   id={item.id}
                   key={index + 1}
