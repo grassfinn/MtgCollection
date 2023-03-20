@@ -8,15 +8,11 @@ export default function Search(props) {
   const [userInput, setUserInput] = React.useState('');
   const [search, setSearch] = React.useState({});
 
-
   async function apiCall(cardName) {
     const scryfall = `https://api.scryfall.com/cards/search?q=${cardName}`;
     setLoad(false);
 
-    const res = await fetch(
-      // `https://api.magicthegathering.io/v1/cards?name=${cardName}`
-      scryfall
-    );
+    const res = await fetch(scryfall);
     // if the call did not go through alert
     if (res.status === 404) {
       alert('please write a card name');

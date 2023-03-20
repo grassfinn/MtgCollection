@@ -49,8 +49,6 @@ export default function Card(props) {
       {location.pathname !== '/MtgCollection/' ? (
         <div
           className="card"
-          // onMouseEnter={() => setHover(true)}
-          // onMouseLeave={() => setHover(false)}
         >
           <img src={img} alt={name} id={id} />
           {/* <h2>price:{price === null ? "MtGA" : ` $${price}`}</h2> */}
@@ -66,7 +64,7 @@ export default function Card(props) {
       ) : (
         cardEle
       )}
-      <div className="fork">
+      <div className="card-msg">
         <p>{message}</p>
         {location.pathname !== '/collection' ? (
           <button
