@@ -8,7 +8,6 @@ export default function Collection(props) {
   const user = props.login.user;
   const localStorage = window.localStorage.getItem('collection');
   const localStorageObj = JSON.parse(localStorage) || [];
-  console.log({props});
 
   // need to have the filter array reset at the start of the render cycle of the component
   React.useEffect(() => {
@@ -44,6 +43,7 @@ export default function Collection(props) {
       );
       // if new items is not equal to zero then we want to return the filtered array
       if (newItems.length !== 0) {
+        console.log(newItems)
         return newItems;
       }
       //  If no elements pass the test it returns an empty array. so we need to cover that option

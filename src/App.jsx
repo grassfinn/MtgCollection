@@ -18,35 +18,36 @@ function App() {
     user: '',
     login: false,
   });
-  
+
   const localStorage = window.localStorage;
   // connect the state to local storage and an empty array if local storage is empty
   const [items, setItems] = React.useState(
     // turn local storage into a JS obj
-    (localStorage.getItem('collection')) === 'undefined' ? [] : JSON.parse(localStorage.getItem('collection'))
+    localStorage.getItem('collection') === 'null'
+      ? []
+      : JSON.parse(localStorage.getItem('collection'))
   );
   const [filteredArray, setFilteredArray] = React.useState(items);
   function addCards(card) {
     // https://bobbyhadz.com/blog/react-check-if-element-exists-in-array
     // check if the card is already in the array
+
     const isFound = items.some((element) => {
       if (element.id === card.id) {
         console.log(`${element.name}`);
         return true;
       }
     });
-    
+
     if (!isFound) {
       // add the card as well as the rest of the previous cards and set the collection item of local storage
       setItems((prevItems) => {
         const newItems = [...prevItems, card];
         // turn locale storage into a string
         localStorage.setItem('collection', JSON.stringify(newItems));
-        console.log(`${card.name} IS NOT in the collection.`);
         return newItems;
       });
     }
-    console.log(`${card.name} IS IN the collection.`);
     return items;
   }
 
@@ -69,7 +70,7 @@ function App() {
       // when the collection changes I need to get the local storage and set the State
       localStorage.setItem('collection', JSON.stringify(items));
       setFilteredArray(items);
-      console.log('reload');
+      // console.log('reload');
       // setItems(JSON.parse(storedItems))
       // console.log({filteredArray})
     }
@@ -77,7 +78,7 @@ function App() {
 
   return (
     <div className="App">
-      <Nav login={login} setLogin={setLogin}  registeredUser={registeredUsers} />
+      <Nav login={login} setLogin={setLogin} registeredUser={registeredUsers} />
       <div className="container">
         <Routes>
           <Route
